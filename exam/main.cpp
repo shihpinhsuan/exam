@@ -1,7 +1,7 @@
 #include "mbed.h"
 #include "uLCD_4DGL.h"
 
-int j = 0, i = 0, l;
+int j = 0, i = 4, l;
 
 using namespace std::chrono;
 
@@ -80,9 +80,7 @@ void uLCD_thread() {
             uLCD.printf("1/2");
         } else if (i == 4) {
             uLCD.printf("1  ");
-        } else {
-            uLCD.printf("no");
-        }
+        } 
         if (j == 1) {
             uLCD.locate(0,5);
             uLCD.printf("confirm selection:\n");
@@ -94,9 +92,11 @@ void uLCD_thread() {
                 uLCD.printf("1/2");
             } else if (i == 4) {
                 uLCD.printf("1  ");
-            } else {
-                uLCD.printf("no");
-            }
+            } 
+        } else {
+            uLCD.locate(0,5);
+            uLCD.printf("confirm selection:\n");
+            uLCD.printf("no ");
         }
     }
 }
@@ -128,9 +128,16 @@ int main() {
     button2.rise(&toggle2);
     button3.rise(&toggle3);
 
+    int k;
+
     while (1) {
         while (j == 1) {
-            if (i == 4) {
+            if (j == 1) {
+                k = i;
+            } else {
+                k = k;
+            }
+            if (k == 4) {
                 for (float k = 0.0; k < 10.0/11.0; k += 10.0/11/50) {
                     aout = k;
                 //ThisThread::sleep_for(1ms);
@@ -142,7 +149,7 @@ int main() {
                 //ThisThread::sleep_for(1ms);
                     wait_us(1200);
                 }
-            } else if (i == 3) {
+            } else if (k == 3) {
                 for (float k = 0.0; k < 10.0/11.0; k += 10.0/11/50) {
                     aout = k;
                 //ThisThread::sleep_for(1ms);
@@ -154,7 +161,7 @@ int main() {
                 //ThisThread::sleep_for(1ms);
                     wait_us(550);
                 }
-            } else if (i == 2) {
+            } else if (k == 2) {
                 for (float k = 0.0; k < 10.0/11.0; k += 10.0/11/50) {
                     aout = k;
                 //ThisThread::sleep_for(1ms);
@@ -166,7 +173,7 @@ int main() {
                 //ThisThread::sleep_for(1ms);
                     wait_us(300);
                 }
-            } else if (i = 1) {
+            } else if (k = 1) {
                 for (float k = 0.0; k < 10.0/11.0; k += 10.0/11/50) {
                     aout = k;
                 //ThisThread::sleep_for(1ms);
