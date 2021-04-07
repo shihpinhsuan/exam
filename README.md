@@ -4,4 +4,5 @@
     <br>Open a terminal<br>
     
 * `$ git clone https://github.com/shihpinhsuan/exam.git`
-* `$ sudo python3 .FFTpy`
+* `$ sudo mbed compile --source . --source ~/ee2405/mbed-os-build/ -m B_L4S5I_IOT01A -t GCC_ARM -f`
+* `$ sudo python3 FFT.py`
